@@ -16,10 +16,10 @@ public class BuscarEnGoogleTest {
     public void setUp() {
         // Iniciamos el driver de Mozilla Firefox
     	
-    	System.setProperty("webdriver.gecko.driver", "C:\\Users\\eriol\\workspace\\ProyectoSelenium\\src\\main\\resources\\geckodriver.exe");    	
+    	System.setProperty("webdriver.gecko.driver", "/home/eduriol/git/selenium-google-example/src/main/resources/geckodriver");    	
         driver = new FirefoxDriver();
          
-        // Navegamos a la página principal de Google
+        // Navegamos a la pÃ¡gina principal de Google
         driver.get("http://www.google.com");
     }
     @Test
@@ -28,21 +28,21 @@ public class BuscarEnGoogleTest {
             // Buscamos el campo de texto por su atributo nombre
             WebElement element = driver.findElement(By.name("q"));
              
-            // Introducimos un valor en el campo para realizar la búsqueda
+            // Introducimos un valor en el campo para realizar la bÃºsqueda
             element.sendKeys("Como empezar a automatizar con Selenium");
              
-            // Enviamos el formulario. WebDriver encontrará el formulario al que pertenece el campo automáticamente
+            // Enviamos el formulario. WebDriver encontrarÃ¡ el formulario al que pertenece el campo automÃ¡ticamente
             element.submit();
              
-            // La búsqueda de Google funciona dinámicamente con JavaScript
-            // Así que introducimos un tiempo de espera de 10 segundos
+            // La bÃºsqueda de Google funciona dinÃ¡micamente con JavaScript
+            // AsÃ­ que introducimos un tiempo de espera de 10 segundos
             (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
                 public Boolean apply(WebDriver d) {
                     //System.out.println(driver.getTitle());
                     return d.getTitle().toLowerCase().startsWith("como empezar a automatizar con selenium");
                 }
             });
-            // Deberíamos ver: "Como empezar a automatizar con Selenium - Buscar con Google" en el título
+            // Deberï¿½amos ver: "Como empezar a automatizar con Selenium - Buscar con Google" en el tï¿½tulo
             assertEquals("Como empezar a automatizar con Selenium - Buscar con Google", driver.getTitle());
         } catch (Error e) {
             // Capture and append Exceptions/Errors
@@ -64,10 +64,10 @@ public class BuscarEnGoogleTest {
     		masInformacionLink.click();
     		(new WebDriverWait(driver,10)).until(new ExpectedCondition<Boolean>() {
     			public Boolean apply(WebDriver d) {
-    				return d.getTitle().toLowerCase().startsWith("realizar búsquedas con autocompletar");
+    				return d.getTitle().toLowerCase().startsWith("realizar bÃºsquedas con autocompletar");
     			}
     		});
-    		assertEquals("Realizar búsquedas con autocompletar - Ayuda de Búsqueda web", driver.getTitle());
+    		assertEquals("Realizar bÃºsquedas con autocompletar - Ayuda de BÃºsqueda web", driver.getTitle());
     	} catch (Error e) {
     		verificationErrors.append(e.toString());
     		System.out.println(driver.getTitle());
