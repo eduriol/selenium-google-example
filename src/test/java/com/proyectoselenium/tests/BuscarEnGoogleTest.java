@@ -26,7 +26,6 @@ public class BuscarEnGoogleTest {
         element.submit();
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                //System.out.println(driver.getTitle());
                 return d.getTitle().toLowerCase().startsWith("como empezar a automatizar con selenium");
             }
         });
